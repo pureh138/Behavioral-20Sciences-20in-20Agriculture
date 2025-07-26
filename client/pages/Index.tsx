@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Brain, 
-  Leaf, 
-  Users, 
-  TrendingUp, 
-  BookOpen, 
-  Mail, 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  Brain,
+  Leaf,
+  Users,
+  TrendingUp,
+  BookOpen,
+  Mail,
   ChevronDown,
   Menu,
   X,
@@ -18,8 +18,8 @@ import {
   Lightbulb,
   CheckCircle,
   ArrowRight,
-  ExternalLink
-} from 'lucide-react';
+  ExternalLink,
+} from "lucide-react";
 
 export default function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,14 +34,14 @@ export default function Index() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.classList.add("animate");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    const elements = document.querySelectorAll('.animate-on-scroll');
+    const elements = document.querySelectorAll(".animate-on-scroll");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -50,64 +50,69 @@ export default function Index() {
   // Theme toggle
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.remove('light');
+      document.documentElement.classList.remove("light");
     } else {
-      document.documentElement.classList.add('light');
+      document.documentElement.classList.add("light");
     }
   }, [isDarkMode]);
 
   // Quiz data
   const quizQuestions = [
     {
-      question: "What is the primary goal of behavioral science in agriculture?",
+      question:
+        "What is the primary goal of behavioral science in agriculture?",
       options: [
         "To increase crop yields only",
         "To influence farmer decision-making for sustainable practices",
         "To replace traditional farming methods",
-        "To reduce farming costs"
+        "To reduce farming costs",
       ],
-      correct: 1
+      correct: 1,
     },
     {
-      question: "Which technique is commonly used to encourage adoption of Best Management Practices (BMPs)?",
+      question:
+        "Which technique is commonly used to encourage adoption of Best Management Practices (BMPs)?",
       options: [
         "Financial penalties",
         "Regulatory enforcement",
         "Behavioral nudging",
-        "Technology replacement"
+        "Technology replacement",
       ],
-      correct: 2
+      correct: 2,
     },
     {
-      question: "What role does the SWAT model play in behavioral science applications?",
+      question:
+        "What role does the SWAT model play in behavioral science applications?",
       options: [
         "Direct farmer behavior modification",
         "Economic impact assessment",
         "Environmental impact prediction to inform decision-making",
-        "Crop rotation planning"
+        "Crop rotation planning",
       ],
-      correct: 2
+      correct: 2,
     },
     {
-      question: "Which factor most influences farmer adoption of new practices?",
+      question:
+        "Which factor most influences farmer adoption of new practices?",
       options: [
         "Government regulations only",
         "Peer influence and social proof",
         "Technology complexity",
-        "Market prices alone"
+        "Market prices alone",
       ],
-      correct: 1
+      correct: 1,
     },
     {
-      question: "What is a key principle of effective behavioral interventions in agriculture?",
+      question:
+        "What is a key principle of effective behavioral interventions in agriculture?",
       options: [
         "One-size-fits-all approaches",
         "Top-down mandates",
         "Understanding local context and farmer perspectives",
-        "Technology-first solutions"
+        "Technology-first solutions",
       ],
-      correct: 2
-    }
+      correct: 2,
+    },
   ];
 
   const handleQuizAnswer = (answerIndex: number) => {
@@ -135,12 +140,12 @@ export default function Index() {
   };
 
   const navigationItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Concepts', href: '#concepts' },
-    { label: 'Applications', href: '#applications' },
-    { label: 'Case Studies', href: '#case-studies' },
-    { label: 'Resources', href: '#resources' },
-    { label: 'Contact', href: '#contact' }
+    { label: "Home", href: "#home" },
+    { label: "Concepts", href: "#concepts" },
+    { label: "Applications", href: "#applications" },
+    { label: "Case Studies", href: "#case-studies" },
+    { label: "Resources", href: "#resources" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -154,13 +159,15 @@ export default function Index() {
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-agriculture-primary text-agriculture-primary-foreground">
                 <Brain className="w-6 h-6" />
               </div>
-              <span className="font-bold text-xl text-foreground">Behavioral Science in Agriculture</span>
+              <span className="font-bold text-xl text-foreground">
+                Behavioral Science in Agriculture
+              </span>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
-                <a 
+                <a
                   key={item.label}
                   href={item.href}
                   className="text-muted-foreground hover:text-foreground transition-colors focus-visible:focus"
@@ -177,15 +184,23 @@ export default function Index() {
                 className="p-2 rounded-lg hover:bg-muted transition-colors focus-visible:focus"
                 aria-label="Toggle theme"
               >
-                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                {isDarkMode ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
               </button>
-              
+
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors focus-visible:focus"
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMenuOpen ? (
+                  <X className="w-5 h-5" />
+                ) : (
+                  <Menu className="w-5 h-5" />
+                )}
               </button>
             </div>
           </div>
@@ -195,7 +210,7 @@ export default function Index() {
             <div className="md:hidden py-4 border-t border-border">
               <nav className="flex flex-col space-y-2">
                 {navigationItems.map((item) => (
-                  <a 
+                  <a
                     key={item.label}
                     href={item.href}
                     className="px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors focus-visible:focus"
@@ -211,25 +226,30 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="section-padding bg-gradient-to-br from-background to-card">
+      <section
+        id="home"
+        className="section-padding bg-gradient-to-br from-background to-card"
+      >
         <div className="container mx-auto container-padding">
           <div className="max-w-4xl mx-auto text-center animate-on-scroll">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-agriculture-primary to-agriculture-accent bg-clip-text text-transparent">
               Understanding Behavioral Science in Agriculture
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Exploring how behavioral insights influence farming decisions and drive sustainable agricultural practices through evidence-based interventions.
+              Exploring how behavioral insights influence farming decisions and
+              drive sustainable agricultural practices through evidence-based
+              interventions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#concepts" 
+              <a
+                href="#concepts"
                 className="inline-flex items-center px-8 py-4 bg-agriculture-primary text-agriculture-primary-foreground rounded-lg hover:opacity-90 transition-opacity focus-visible:focus"
               >
                 Explore Concepts
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <a 
-                href="#case-studies" 
+              <a
+                href="#case-studies"
                 className="inline-flex items-center px-8 py-4 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors focus-visible:focus"
               >
                 View Case Studies
@@ -244,9 +264,12 @@ export default function Index() {
         <div className="container mx-auto container-padding">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16 animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Concepts</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Core Concepts
+              </h2>
               <p className="text-xl text-muted-foreground">
-                Understanding the fundamental principles that drive behavioral change in agricultural settings
+                Understanding the fundamental principles that drive behavioral
+                change in agricultural settings
               </p>
             </div>
 
@@ -255,35 +278,41 @@ export default function Index() {
                 {
                   icon: <Target className="w-8 h-8" />,
                   title: "Behavioral Nudging",
-                  description: "Subtle interventions that guide farmers toward beneficial decisions without restricting choice, based on behavioral economics principles."
+                  description:
+                    "Subtle interventions that guide farmers toward beneficial decisions without restricting choice, based on behavioral economics principles.",
                 },
                 {
                   icon: <Users className="w-8 h-8" />,
                   title: "Social Proof & Peer Influence",
-                  description: "Leveraging community dynamics and peer networks to encourage adoption of sustainable farming practices through social validation."
+                  description:
+                    "Leveraging community dynamics and peer networks to encourage adoption of sustainable farming practices through social validation.",
                 },
                 {
                   icon: <Lightbulb className="w-8 h-8" />,
                   title: "Decision Architecture",
-                  description: "Designing choice environments that make sustainable options more accessible and appealing to farmers."
+                  description:
+                    "Designing choice environments that make sustainable options more accessible and appealing to farmers.",
                 },
                 {
                   icon: <BarChart3 className="w-8 h-8" />,
                   title: "Data-Driven Insights",
-                  description: "Using agricultural data and behavioral analytics to understand farmer preferences and optimize intervention strategies."
+                  description:
+                    "Using agricultural data and behavioral analytics to understand farmer preferences and optimize intervention strategies.",
                 },
                 {
                   icon: <Leaf className="w-8 h-8" />,
                   title: "Sustainable Practice Adoption",
-                  description: "Strategies to overcome barriers to adopting environmentally beneficial practices like cover crops and precision agriculture."
+                  description:
+                    "Strategies to overcome barriers to adopting environmentally beneficial practices like cover crops and precision agriculture.",
                 },
                 {
                   icon: <Brain className="w-8 h-8" />,
                   title: "Cognitive Biases in Agriculture",
-                  description: "Understanding how mental shortcuts and biases affect farming decisions and how to account for them in interventions."
-                }
+                  description:
+                    "Understanding how mental shortcuts and biases affect farming decisions and how to account for them in interventions.",
+                },
               ].map((concept, index) => (
-                <div 
+                <div
                   key={index}
                   className="animate-on-scroll p-6 bg-card rounded-lg border border-border hover:shadow-lg transition-shadow hover-lift"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -291,7 +320,9 @@ export default function Index() {
                   <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-agriculture-primary/10 text-agriculture-primary mb-4">
                     {concept.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{concept.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3">
+                    {concept.title}
+                  </h3>
                   <p className="text-muted-foreground">{concept.description}</p>
                 </div>
               ))}
@@ -305,9 +336,12 @@ export default function Index() {
         <div className="container mx-auto container-padding">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Real-World Applications</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Real-World Applications
+              </h2>
               <p className="text-xl text-muted-foreground">
-                How behavioral science principles are being applied to solve agricultural challenges
+                How behavioral science principles are being applied to solve
+                agricultural challenges
               </p>
             </div>
 
@@ -315,51 +349,63 @@ export default function Index() {
               {[
                 {
                   title: "Best Management Practice (BMP) Adoption",
-                  description: "Using behavioral interventions to increase adoption of practices like precision nutrient management, cover cropping, and integrated pest management.",
+                  description:
+                    "Using behavioral interventions to increase adoption of practices like precision nutrient management, cover cropping, and integrated pest management.",
                   features: [
                     "Peer comparison dashboards showing neighbor adoption rates",
                     "Timing interventions to align with natural decision points",
                     "Financial incentive structuring based on loss aversion principles",
-                    "Social recognition programs for early adopters"
+                    "Social recognition programs for early adopters",
                   ],
-                  image: "🌱"
+                  image: "🌱",
                 },
                 {
                   title: "Water Conservation Initiatives",
-                  description: "Behavioral strategies to promote efficient water use and irrigation management among farmers facing water scarcity.",
+                  description:
+                    "Behavioral strategies to promote efficient water use and irrigation management among farmers facing water scarcity.",
                   features: [
                     "Real-time feedback systems on water usage patterns",
                     "Community challenges and goal-setting frameworks",
                     "Default opt-in for water-saving technologies",
-                    "Education campaigns highlighting economic and environmental benefits"
+                    "Education campaigns highlighting economic and environmental benefits",
                   ],
-                  image: "💧"
+                  image: "💧",
                 },
                 {
                   title: "Precision Agriculture Technology Adoption",
-                  description: "Overcoming barriers to adopting GPS guidance, variable rate application, and sensor-based monitoring systems.",
+                  description:
+                    "Overcoming barriers to adopting GPS guidance, variable rate application, and sensor-based monitoring systems.",
                   features: [
                     "Trial programs reducing perceived risk and complexity",
                     "Peer mentorship networks for technology transfer",
                     "Simplified user interfaces based on cognitive load theory",
-                    "Success story sharing and social proof campaigns"
+                    "Success story sharing and social proof campaigns",
                   ],
-                  image: "🚜"
-                }
+                  image: "🚜",
+                },
               ].map((application, index) => (
-                <div 
+                <div
                   key={index}
-                  className={`animate-on-scroll flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+                  className={`animate-on-scroll flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-12`}
                 >
                   <div className="flex-1">
                     <div className="text-6xl mb-6">{application.image}</div>
-                    <h3 className="text-2xl font-bold mb-4">{application.title}</h3>
-                    <p className="text-lg text-muted-foreground mb-6">{application.description}</p>
+                    <h3 className="text-2xl font-bold mb-4">
+                      {application.title}
+                    </h3>
+                    <p className="text-lg text-muted-foreground mb-6">
+                      {application.description}
+                    </p>
                     <ul className="space-y-3">
                       {application.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start gap-3">
+                        <li
+                          key={featureIndex}
+                          className="flex items-start gap-3"
+                        >
                           <CheckCircle className="w-5 h-5 text-agriculture-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{feature}</span>
+                          <span className="text-muted-foreground">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -368,8 +414,12 @@ export default function Index() {
                     <div className="bg-muted/50 rounded-lg p-8 border border-border">
                       <div className="text-center text-muted-foreground">
                         <Microscope className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                        <p className="text-sm">Interactive visualization placeholder</p>
-                        <p className="text-xs mt-2">Future integration: Three.js 3D farm visualization</p>
+                        <p className="text-sm">
+                          Interactive visualization placeholder
+                        </p>
+                        <p className="text-xs mt-2">
+                          Future integration: Three.js 3D farm visualization
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -385,9 +435,12 @@ export default function Index() {
         <div className="container mx-auto container-padding">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16 animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Case Studies</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Case Studies
+              </h2>
               <p className="text-xl text-muted-foreground">
-                Evidence-based examples of successful behavioral interventions in agriculture
+                Evidence-based examples of successful behavioral interventions
+                in agriculture
               </p>
             </div>
 
@@ -397,46 +450,56 @@ export default function Index() {
                   title: "SWAT Model Integration with Farmer Decision-Making",
                   location: "Iowa Watershed Study",
                   year: "2020-2023",
-                  description: "Integration of Soil and Water Assessment Tool (SWAT) model predictions with behavioral nudges to influence cover crop adoption among corn and soybean farmers.",
-                  methodology: "Randomized controlled trial with 400 farmers comparing traditional education vs. behavioral intervention approaches.",
+                  description:
+                    "Integration of Soil and Water Assessment Tool (SWAT) model predictions with behavioral nudges to influence cover crop adoption among corn and soybean farmers.",
+                  methodology:
+                    "Randomized controlled trial with 400 farmers comparing traditional education vs. behavioral intervention approaches.",
                   results: [
                     "31% increase in cover crop adoption in intervention group",
                     "Reduced nutrient runoff by an average of 23%",
-                    "Higher retention rates for sustainable practices after 2 years"
+                    "Higher retention rates for sustainable practices after 2 years",
                   ],
-                  keyInsights: "Farmers responded most positively when environmental data was presented in terms of economic impact and peer comparisons.",
-                  source: "Journal of Environmental Economics and Management, 2023"
+                  keyInsights:
+                    "Farmers responded most positively when environmental data was presented in terms of economic impact and peer comparisons.",
+                  source:
+                    "Journal of Environmental Economics and Management, 2023",
                 },
                 {
                   title: "Social Proof Campaigns for Precision Agriculture",
                   location: "Nebraska Corn Belt",
                   year: "2019-2022",
-                  description: "Large-scale behavioral intervention using social proof and peer influence to increase adoption of precision nutrient management technologies.",
-                  methodology: "Multi-year field experiment with over 800 farmers using peer comparison messaging and community demonstrations.",
+                  description:
+                    "Large-scale behavioral intervention using social proof and peer influence to increase adoption of precision nutrient management technologies.",
+                  methodology:
+                    "Multi-year field experiment with over 800 farmers using peer comparison messaging and community demonstrations.",
                   results: [
                     "47% increase in precision agriculture technology adoption",
                     "Average 15% reduction in nitrogen fertilizer use",
-                    "Improved profit margins by $23 per acre on average"
+                    "Improved profit margins by $23 per acre on average",
                   ],
-                  keyInsights: "Local champions and peer networks were more effective than external expert recommendations in driving adoption.",
-                  source: "Agricultural Systems, 2022"
+                  keyInsights:
+                    "Local champions and peer networks were more effective than external expert recommendations in driving adoption.",
+                  source: "Agricultural Systems, 2022",
                 },
                 {
                   title: "Behavioral Economics in Agricultural Extension",
                   location: "Multi-state Extension Program",
                   year: "2021-2024",
-                  description: "Application of behavioral economics principles to redesign agricultural extension services and improve farmer engagement with sustainable practices.",
-                  methodology: "Quasi-experimental design comparing traditional vs. behaviorally-informed extension approaches across 5 states.",
+                  description:
+                    "Application of behavioral economics principles to redesign agricultural extension services and improve farmer engagement with sustainable practices.",
+                  methodology:
+                    "Quasi-experimental design comparing traditional vs. behaviorally-informed extension approaches across 5 states.",
                   results: [
                     "60% higher engagement in extension programs",
                     "Sustained behavior change in 78% of participants",
-                    "Cost-effectiveness improvement of 34% in program delivery"
+                    "Cost-effectiveness improvement of 34% in program delivery",
                   ],
-                  keyInsights: "Timing of interventions and framing of information significantly impacted farmer receptiveness to new practices.",
-                  source: "Extension Education Review, 2024"
-                }
+                  keyInsights:
+                    "Timing of interventions and framing of information significantly impacted farmer receptiveness to new practices.",
+                  source: "Extension Education Review, 2024",
+                },
               ].map((study, index) => (
-                <div 
+                <div
                   key={index}
                   className="animate-on-scroll bg-card rounded-lg border border-border p-8 hover:shadow-lg transition-shadow"
                   style={{ animationDelay: `${index * 0.2}s` }}
@@ -449,34 +512,45 @@ export default function Index() {
                           {study.year}
                         </span>
                       </div>
-                      <p className="text-muted-foreground mb-4">{study.location}</p>
+                      <p className="text-muted-foreground mb-4">
+                        {study.location}
+                      </p>
                       <p className="mb-6">{study.description}</p>
-                      
+
                       <div className="space-y-4">
                         <div>
                           <h4 className="font-semibold mb-2">Methodology</h4>
-                          <p className="text-sm text-muted-foreground">{study.methodology}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {study.methodology}
+                          </p>
                         </div>
-                        
+
                         <div>
                           <h4 className="font-semibold mb-2">Key Results</h4>
                           <ul className="space-y-1">
                             {study.results.map((result, resultIndex) => (
-                              <li key={resultIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <li
+                                key={resultIndex}
+                                className="flex items-start gap-2 text-sm text-muted-foreground"
+                              >
                                 <CheckCircle className="w-4 h-4 text-agriculture-primary mt-0.5 flex-shrink-0" />
                                 {result}
                               </li>
                             ))}
                           </ul>
                         </div>
-                        
+
                         <div>
                           <h4 className="font-semibold mb-2">Key Insights</h4>
-                          <p className="text-sm text-muted-foreground">{study.keyInsights}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {study.keyInsights}
+                          </p>
                         </div>
-                        
+
                         <div className="pt-4 border-t border-border">
-                          <p className="text-xs text-muted-foreground">Source: {study.source}</p>
+                          <p className="text-xs text-muted-foreground">
+                            Source: {study.source}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -505,12 +579,15 @@ export default function Index() {
                   <div className="mb-6">
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-sm text-muted-foreground">
-                        Question {currentQuestionIndex + 1} of {quizQuestions.length}
+                        Question {currentQuestionIndex + 1} of{" "}
+                        {quizQuestions.length}
                       </span>
                       <div className="w-32 h-2 bg-muted rounded-full">
-                        <div 
+                        <div
                           className="h-full bg-agriculture-primary rounded-full transition-all duration-300"
-                          style={{ width: `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%` }}
+                          style={{
+                            width: `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%`,
+                          }}
                         />
                       </div>
                     </div>
@@ -520,15 +597,17 @@ export default function Index() {
                   </div>
 
                   <div className="space-y-3">
-                    {quizQuestions[currentQuestionIndex].options.map((option, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleQuizAnswer(index)}
-                        className="w-full text-left p-4 rounded-lg border border-border hover:border-agriculture-primary hover:bg-agriculture-primary/10 transition-colors focus-visible:focus"
-                      >
-                        {option}
-                      </button>
-                    ))}
+                    {quizQuestions[currentQuestionIndex].options.map(
+                      (option, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleQuizAnswer(index)}
+                          className="w-full text-left p-4 rounded-lg border border-border hover:border-agriculture-primary hover:bg-agriculture-primary/10 transition-colors focus-visible:focus"
+                        >
+                          {option}
+                        </button>
+                      ),
+                    )}
                   </div>
                 </div>
               ) : (
@@ -537,14 +616,15 @@ export default function Index() {
                     <div className="text-4xl font-bold text-agriculture-primary mb-2">
                       {calculateScore()}/{quizQuestions.length}
                     </div>
-                    <h3 className="text-xl font-semibold mb-4">Quiz Complete!</h3>
+                    <h3 className="text-xl font-semibold mb-4">
+                      Quiz Complete!
+                    </h3>
                     <p className="text-muted-foreground">
-                      {calculateScore() >= 4 
+                      {calculateScore() >= 4
                         ? "Excellent! You have a strong understanding of behavioral science in agriculture."
                         : calculateScore() >= 3
-                        ? "Good job! You understand the key concepts."
-                        : "Keep learning! Consider reviewing the concepts section."
-                      }
+                          ? "Good job! You understand the key concepts."
+                          : "Keep learning! Consider reviewing the concepts section."}
                     </p>
                   </div>
                   <button
@@ -578,24 +658,28 @@ export default function Index() {
                   icon: <BookOpen className="w-6 h-6" />,
                   items: [
                     {
-                      title: "Behavioral Economics and Agricultural Technology Adoption",
+                      title:
+                        "Behavioral Economics and Agricultural Technology Adoption",
                       author: "Smith et al., 2023",
                       link: "#",
-                      description: "Comprehensive review of behavioral factors influencing technology adoption in agriculture."
+                      description:
+                        "Comprehensive review of behavioral factors influencing technology adoption in agriculture.",
                     },
                     {
                       title: "Nudging Farmers Toward Sustainability",
                       author: "Johnson & Lee, 2022",
                       link: "#",
-                      description: "Field experimental evidence on the effectiveness of behavioral nudges in promoting sustainable farming practices."
+                      description:
+                        "Field experimental evidence on the effectiveness of behavioral nudges in promoting sustainable farming practices.",
                     },
                     {
                       title: "Social Networks and Agricultural Innovation",
                       author: "Davis et al., 2024",
                       link: "#",
-                      description: "Analysis of peer influence and social proof in agricultural decision-making processes."
-                    }
-                  ]
+                      description:
+                        "Analysis of peer influence and social proof in agricultural decision-making processes.",
+                    },
+                  ],
                 },
                 {
                   category: "Tools & Models",
@@ -605,43 +689,50 @@ export default function Index() {
                       title: "SWAT Model Integration Toolkit",
                       author: "USDA-ARS",
                       link: "#",
-                      description: "Tools for integrating environmental models with behavioral intervention strategies."
+                      description:
+                        "Tools for integrating environmental models with behavioral intervention strategies.",
                     },
                     {
                       title: "Behavioral Decision Support System",
                       author: "AgTech Solutions",
                       link: "#",
-                      description: "Software platform for designing and implementing behavioral interventions in agricultural extension."
+                      description:
+                        "Software platform for designing and implementing behavioral interventions in agricultural extension.",
                     },
                     {
                       title: "Farmer Survey Design Framework",
                       author: "Extension Methodology Group",
                       link: "#",
-                      description: "Best practices for conducting behavioral research with agricultural communities."
-                    }
-                  ]
-                }
+                      description:
+                        "Best practices for conducting behavioral research with agricultural communities.",
+                    },
+                  ],
+                },
               ].map((section, sectionIndex) => (
                 <div key={sectionIndex} className="animate-on-scroll">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-2 bg-agriculture-primary/10 text-agriculture-primary rounded-lg">
                       {section.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{section.category}</h3>
+                    <h3 className="text-xl font-semibold">
+                      {section.category}
+                    </h3>
                   </div>
                   <div className="space-y-4">
                     {section.items.map((item, itemIndex) => (
-                      <div 
+                      <div
                         key={itemIndex}
                         className="p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow hover-lift"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <h4 className="font-medium mb-1">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground mb-2">{item.author}</p>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              {item.author}
+                            </p>
                             <p className="text-sm">{item.description}</p>
                           </div>
-                          <a 
+                          <a
                             href={item.link}
                             className="p-2 text-muted-foreground hover:text-foreground transition-colors focus-visible:focus"
                             aria-label={`View ${item.title}`}
@@ -666,7 +757,8 @@ export default function Index() {
             <div className="text-center mb-12 animate-on-scroll">
               <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
               <p className="text-xl text-muted-foreground">
-                Questions about behavioral science in agriculture? We'd love to hear from you.
+                Questions about behavioral science in agriculture? We'd love to
+                hear from you.
               </p>
             </div>
 
@@ -674,7 +766,10 @@ export default function Index() {
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="firstName"
+                      className="block text-sm font-medium mb-2"
+                    >
                       First Name
                     </label>
                     <input
@@ -686,7 +781,10 @@ export default function Index() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="lastName"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Last Name
                     </label>
                     <input
@@ -700,7 +798,10 @@ export default function Index() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email Address
                   </label>
                   <input
@@ -713,7 +814,10 @@ export default function Index() {
                 </div>
 
                 <div>
-                  <label htmlFor="organization" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="organization"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Organization (Optional)
                   </label>
                   <input
@@ -726,7 +830,10 @@ export default function Index() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -752,8 +859,12 @@ export default function Index() {
                 <div className="p-6 bg-muted/30 rounded-lg border border-border text-center">
                   <div className="text-muted-foreground">
                     <Users className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    <p className="text-sm">Interactive comment system placeholder</p>
-                    <p className="text-xs mt-1">Future integration: Supabase-powered discussions</p>
+                    <p className="text-sm">
+                      Interactive comment system placeholder
+                    </p>
+                    <p className="text-xs mt-1">
+                      Future integration: Supabase-powered discussions
+                    </p>
                   </div>
                 </div>
               </div>
@@ -771,14 +882,17 @@ export default function Index() {
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-agriculture-primary text-agriculture-primary-foreground">
                   <Brain className="w-5 h-5" />
                 </div>
-                <span className="font-bold text-lg">Behavioral Science in Agriculture</span>
+                <span className="font-bold text-lg">
+                  Behavioral Science in Agriculture
+                </span>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                Advancing sustainable agriculture through evidence-based behavioral interventions and farmer-centered research.
+                Advancing sustainable agriculture through evidence-based
+                behavioral interventions and farmer-centered research.
               </p>
               <div className="flex space-x-4">
-                {['Twitter', 'LinkedIn', 'ResearchGate'].map((social) => (
-                  <a 
+                {["Twitter", "LinkedIn", "ResearchGate"].map((social) => (
+                  <a
                     key={social}
                     href="#"
                     className="text-muted-foreground hover:text-foreground transition-colors focus-visible:focus"
@@ -795,7 +909,7 @@ export default function Index() {
               <ul className="space-y-2 text-sm">
                 {navigationItems.map((item) => (
                   <li key={item.label}>
-                    <a 
+                    <a
                       href={item.href}
                       className="text-muted-foreground hover:text-foreground transition-colors focus-visible:focus"
                     >
@@ -829,9 +943,15 @@ export default function Index() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Behavioral Science in Agriculture. Educational resource for research and policy communities.</p>
+            <p>
+              &copy; 2024 Behavioral Science in Agriculture. Educational
+              resource for research and policy communities.
+            </p>
             <div className="mt-2">
-              <p>Built with React, TypeScript, and Tailwind CSS. Ready for Three.js and Supabase integration.</p>
+              <p>
+                Built with React, TypeScript, and Tailwind CSS. Ready for
+                Three.js and Supabase integration.
+              </p>
             </div>
           </div>
         </div>

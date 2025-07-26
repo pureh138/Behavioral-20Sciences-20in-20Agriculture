@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     // Ensure dark theme is applied by default
-    document.documentElement.classList.remove('light');
+    document.documentElement.classList.remove("light");
   }, []);
 
   return (

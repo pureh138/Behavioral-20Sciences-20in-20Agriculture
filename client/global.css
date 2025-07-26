@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -98,7 +98,9 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 
   /* Scroll animations setup */
@@ -150,11 +152,19 @@
 
   /* Agriculture-themed gradient backgrounds */
   .gradient-agriculture {
-    background: linear-gradient(135deg, hsl(var(--agriculture-primary)) 0%, hsl(var(--agriculture-secondary)) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(var(--agriculture-primary)) 0%,
+      hsl(var(--agriculture-secondary)) 100%
+    );
   }
 
   .gradient-earth {
-    background: linear-gradient(135deg, hsl(25 50% 42%) 0%, hsl(25 50% 28%) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(25 50% 42%) 0%,
+      hsl(25 50% 28%) 100%
+    );
   }
 
   /* Interactive hover effects */
